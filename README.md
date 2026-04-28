@@ -83,6 +83,6 @@ Add `src/`, `models/`, and `notebooks/` if you split training and serving code l
 
 ## Contributors
 - Bindhu Sahithi — Model training & prediction logic
-- Rishaniya Parthasarathy — Data preprocessing, feature engineering, SMOTE implementation & model evaluation
+- Rishaniya Parthasarathy — Data preprocessing, feature engineering & model evaluation
 - Sharaban Tahura — UI design & styling
 - Lawrence Jaba Anand — Visualizations
