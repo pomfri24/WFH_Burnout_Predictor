@@ -43,7 +43,6 @@ st.markdown(
 # --------------------------
 @st.cache_data
 def load_and_train():
-    # --- PART: RISHANIYA PARTHASARATHY ---
     # Responsibility: Data cleaning and formatting
     # Loading the synthetic burnout dataset
     df = pd.read_csv("work_from_home_burnout_dataset.csv")
@@ -51,7 +50,6 @@ def load_and_train():
     # Cleaning column names by stripping any leading/trailing whitespace (Defensive Programming)
     df.columns = df.columns.str.strip()
 
-    # --- PART: BINDHU  SAHITHI VELUDANDI ---
     # Responsibility: Data preprocessing and model training
     # Encoding categorical variables (Day Type and Burnout Risk) into numerical values for the model
     # Handle missing values
@@ -74,19 +72,16 @@ def load_and_train():
     smote = SMOTE(random_state=42)
     X_res, y_res = smote.fit_resample(X, y)
 
-    # --- PART: RISHANIYA PARTHASARATHY ---
     # Responsibility: Implement train-test split
     # Splitting data so 20% is reserved for evaluating model performance and accuracy
     X_train, X_test, y_train, y_test = train_test_split(X_res, y_res, test_size=0.2, random_state=42)
 
-    # --- PART: BINDHU  SAHITHI VELUDANDI ---
     # Training the Random Forest Classifier with balanced class weights
     rf_model = RandomForestClassifier(n_estimators=200, class_weight='balanced', random_state=42)
     rf_model.fit(X_train, y_train)
 
     return rf_model, le_target, X_test, y_test, df, features
 
-# --- PART: BINDHU  SAHITHI VELUDANDI ---
 # Responsibility: Execute the training function and store results in variables
 model, le_target, X_test, y_test, full_df, feature_cols = load_and_train()
 
@@ -124,7 +119,6 @@ st.markdown("---")
 # Layout using columns to display results and metrics side-by-side
 col1, col2 = st.columns([1, 1])
 
-# --- PART: BINDHU  SAHITHI VELUDANDI ---
 # Responsibility: Implement model prediction and display results 
 with col1:
     st.subheader("🚀 Live Prediction")
@@ -146,7 +140,6 @@ with col1:
             st.success("Maintaining Balance: Continue current healthy work patterns and wellness habits.")
 
 with col2:
-    # --- PART: RISHANIYA PARTHASARATHY ---
     # Responsibility: Evaluate model performance
     st.subheader("📈 Model Evaluation")
     y_pred = model.predict(X_test)
